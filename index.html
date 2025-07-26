@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Análise Técnica BTC - Suportes e Resistências</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: #f9f9f9;
+      color: #222;
+    }
+    h1, h2 {
+      color: #2b6cb0;
+    }
+    hr {
+      margin: 2rem 0;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
+    .price {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #27ae60;
+    }
+    .section {
+      margin-bottom: 1.8rem;
+    }
+    blockquote {
+      background: #e3f6f5;
+      border-left: 5px solid #27ae60;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+      color: #555;
+    }
+    ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Análise Técnica BTC – Suportes e Resistências</h1>
+
+  <div class="section">
+    <div>Preço atual do BTC: <span class="price" id="btc-price">Carregando...</span></div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <h2>Suportes importantes:</h2>
+    <ul>
+      <li>Suporte principal: ~$108.300</li>
+      <li>Suporte secundário: ~$107.000 (próximo à média de 50 dias)</li>
+      <li>Zona psicológica/histórica: ~$100.000</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Resistências importantes:</h2>
+    <ul>
+      <li>Resistência crítica: ~$120.000 (recente topo de consolidação)</li>
+      <li>Resistência intermediária: ~119.800</li>
+      <li>Resistência estendida: ~120.970 / ~123.100</li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <h2>Order Flow</h2>
+    <ul>
+      <li>Verifique níveis com grandes influxos de market orders compradores ou vendedores.</li>
+      <li>Suportes confirmados se muitos compradores absorverem vendas agressivas.</li>
+      <li>Resistência se ocorrer o oposto no livro de ordens (vende muito sem absorção).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Volume Profile / TPO</h2>
+    <ul>
+      <li>Pontos de controle de volume (high-volume nodes) em torno de $107–108K e $118–119K.</li>
+      <li>Tempo e volume distribuído mostram rotação predominante nessas áreas.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Padrões Harmônicos</h2>
+    <ul>
+      <li>Padrão Bat em desenvolvimento com ponto D próximo a $107–108K → possível reversão se confirmado com order flow.</li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <h2>Conclusão para atualização manual:</h2>
+    <ul>
+      <li><strong>Suporte forte:</strong> $107.000 – $108.300</li>
+      <li><strong>Resistência crítica:</strong> $119.800 – $120.000</li>
+      <li><strong>Zona de decisão atual:</strong> faixa de $107K a $120K, com potencial reversão ou rompimento dependendo do volume e comportamento de ordens.</li>
+    </ul>
+  </div>
+
+  <blockquote>
+    Atenção: Este conteúdo é para fins educacionais. Não é recomendação de compra ou venda.
+  </blockquote>
+
+  <script>
+    async function fetchBTCPrice() {
+      try {
+        const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+        const data = await res.json();
+        const price = data.bitcoin.usd;
+        document.getElementById('btc-price').textContent = `$${price.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+      } catch (error) {
+        document.getElementById('btc-price').textContent = 'Erro ao carregar preço';
+      }
+    }
+
+    fetchBTCPrice();
+    setInterval(fetchBTCPrice, 10000); // atualiza a cada 10 segundos
+  </script>
+
+</body>
+</html>
